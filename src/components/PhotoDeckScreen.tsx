@@ -1,0 +1,79 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import memory1 from "@/assets/memory-1.png";
+import memory2 from "@/assets/memory-2.png";
+import memory3 from "@/assets/memory-3.png";
+
+interface PhotoDeckScreenProps {
+  onNext: () => void;
+}
+
+const photos = [
+  { id: 1, src: memory1, alt: "Sweet moment 1" },
+  { id: 2, src: memory2, alt: "Sweet moment 2" },
+  { id: 3, src: memory3, alt: "Sweet moment 3" },
+];
+
+export const PhotoDeckScreen = ({ onNext }: PhotoDeckScreenProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8">
+      <h2 className="text-3xl md:text-4xl font-hand neon-text text-center">
+        Some Sweet Moments (Swipe the cards)
+      </h2>
+      
+      <div className="relative w-full max-w-md">
+        <div className="aspect-[3/4] relative neon-pink-border rounded-2xl overflow-hidden bg-card/50">
+          <img
+            src={photos[currentIndex].src}
+            alt={photos[currentIndex].alt}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <button
+          onClick={handlePrevious}
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary/30 neon-border hover:bg-primary/50 transition-all hover:scale-110"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        
+        <button
+          onClick={handleNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary/30 neon-border hover:bg-primary/50 transition-all hover:scale-110"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+        
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {photos.map((_, index) => (
+            <div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentIndex ? 'bg-neon-pink w-6' : 'bg-muted-foreground/50'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+      
+      <Button
+        onClick={onNext}
+        size="lg"
+        className="text-2xl px-12 py-8 font-hand neon-pink-border bg-neon-pink/20 hover:bg-neon-pink/40 text-foreground transition-all hover:scale-110"
+      >
+        💌 Open My Message
+      </Button>
+    </div>
+  );
+};
