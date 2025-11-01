@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { BuntingDecoration } from "@/components/BuntingDecoration";
 
 interface MessageCardScreenProps {
   onNext: () => void;
@@ -13,7 +14,8 @@ export const MessageCardScreen = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8 relative overflow-hidden">
+      <BuntingDecoration />
       <h2 className="text-3xl md:text-4xl font-hand neon-text text-center">
         A Special Message
       </h2>

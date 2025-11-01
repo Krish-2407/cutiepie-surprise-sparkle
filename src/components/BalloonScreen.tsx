@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { BuntingDecoration } from "@/components/BuntingDecoration";
 
 interface BalloonScreenProps {
   onNext: () => void;
@@ -24,7 +25,8 @@ export const BalloonScreen = ({ onNext }: BalloonScreenProps) => {
   const allPopped = poppedBalloons.length === balloons.length;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-12 px-4 py-8">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-12 px-4 py-8 relative overflow-hidden">
+      <BuntingDecoration />
       <h2 className="text-3xl md:text-4xl font-hand neon-text text-center">
         Pop all 4 balloons
       </h2>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { BuntingDecoration } from "@/components/BuntingDecoration";
 import cakeImage from "@/assets/birthday-cake.png";
 
 interface CakeScreenProps {
@@ -35,6 +36,7 @@ export const CakeScreen = ({ onNext }: CakeScreenProps) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8 relative overflow-hidden">
+      <BuntingDecoration />
       {confetti.map((piece) => (
         <div
           key={piece.id}
