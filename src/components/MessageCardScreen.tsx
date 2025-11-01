@@ -5,7 +5,7 @@ interface MessageCardScreenProps {
   onNext: () => void;
 }
 
-export const MessageCardScreen = ({ onNext }: MessageCardScreenProps) => {
+export const MessageCardScreen = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -42,7 +42,7 @@ export const MessageCardScreen = ({ onNext }: MessageCardScreenProps) => {
             </div>
           </button>
         ) : (
-          <div className="neon-border rounded-3xl p-8 md:p-12 bg-card/50 animate-flip space-y-6">
+          <div className="neon-border rounded-3xl p-8 md:p-12 bg-card/50 animate space-y-6">
             <div className="flex justify-center gap-3 mb-4">
               <span className="text-5xl">🎈</span>
               <span className="text-5xl">🎉</span>
@@ -65,7 +65,7 @@ export const MessageCardScreen = ({ onNext }: MessageCardScreenProps) => {
         )}
       </div>
       
-      {isOpen && (
+      {/* {isOpen && (
         <Button
           onClick={onNext}
           size="lg"
@@ -73,7 +73,7 @@ export const MessageCardScreen = ({ onNext }: MessageCardScreenProps) => {
         >
           Next →
         </Button>
-      )}
+      )} */}
     </div>
   );
 };

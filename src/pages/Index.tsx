@@ -5,7 +5,7 @@ import { CakeScreen } from "@/components/CakeScreen";
 import { BalloonScreen } from "@/components/BalloonScreen";
 import { PhotoDeckScreen } from "@/components/PhotoDeckScreen";
 import { MessageCardScreen } from "@/components/MessageCardScreen";
-import { GiftScreen } from "@/components/GiftScreen";
+// import { GiftScreen } from "@/components/GiftScreen";
 
 const Index = () => {
   const [screen, setScreen] = useState(1);
@@ -21,8 +21,8 @@ const Index = () => {
       {screen === 3 && <CakeScreen onNext={nextScreen} />}
       {screen === 4 && <BalloonScreen onNext={nextScreen} />}
       {screen === 5 && <PhotoDeckScreen onNext={nextScreen} />}
-      {screen === 6 && <MessageCardScreen onNext={nextScreen} />}
-      {screen === 7 && <GiftScreen />}
+      {screen === 6 && <MessageCardScreen />}
+      {/* {screen === 7 && <GiftScreen />} */}
     </main>
   );
 };
