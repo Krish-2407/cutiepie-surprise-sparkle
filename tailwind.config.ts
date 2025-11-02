@@ -56,9 +56,10 @@ export default {
           blue: "hsl(var(--neon-blue))",
         },
       },
-      fontFamily: {
-        hand: ['Patrick Hand', 'Caveat', 'cursive'],
-      },
+			fontFamily: {
+				hand: ['Patrick Hand', 'Caveat', 'cursive'],
+				stylish: ['Pacifico', 'Patrick Hand', 'cursive'],
+			},
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
