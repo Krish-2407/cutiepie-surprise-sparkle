@@ -35,30 +35,49 @@ export const PhotoDeckScreen = ({ onNext }: PhotoDeckScreenProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8">
-      <h2 className="text-3xl md:text-4xl font-hand neon-text text-center">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8 relative overflow-hidden">
+      {/* Floating hearts */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-3xl opacity-10 animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${5 + Math.random() * 2}s`
+            }}
+          >
+            ❤️
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl md:text-4xl font-hand neon-text text-center animate-slide-up">
         Some Sweet Moments (Swipe the cards)
       </h2>
       
-      <div className="relative w-full max-w-md">
-        <div className="aspect-[3/4] relative neon-pink-border rounded-2xl overflow-hidden bg-card/50">
+      <div className="relative w-full max-w-md animate-fade-in">
+        <div className="aspect-[3/4] relative neon-pink-border rounded-2xl overflow-hidden bg-card/50 transition-smooth">
           <img
+            key={currentIndex}
             src={photos[currentIndex].src}
             alt={photos[currentIndex].alt}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover animate-fade-in"
           />
         </div>
         
         <button
           onClick={handlePrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary/30 neon-border hover:bg-primary/50 transition-all hover:scale-110"
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary/30 neon-border hover:bg-primary/50 transition-smooth hover:scale-110 animate-pulse-neon"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         
         <button
           onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary/30 neon-border hover:bg-primary/50 transition-all hover:scale-110"
+          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary/30 neon-border hover:bg-primary/50 transition-smooth hover:scale-110 animate-pulse-neon"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -78,7 +97,7 @@ export const PhotoDeckScreen = ({ onNext }: PhotoDeckScreenProps) => {
       <Button
         onClick={onNext}
         size="lg"
-        className="text-2xl px-12 py-8 font-hand neon-pink-border bg-neon-pink/20 hover:bg-neon-pink/40 text-foreground transition-all hover:scale-110"
+        className="text-2xl px-12 py-8 font-hand neon-pink-border bg-neon-pink/20 hover:bg-neon-pink/40 text-foreground transition-smooth hover:scale-110 animate-bounce-in"
       >
         💌 Open My Message
       </Button>
