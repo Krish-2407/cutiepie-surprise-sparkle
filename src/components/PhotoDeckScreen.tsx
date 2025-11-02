@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import memory1 from "@/assets/memory-1.png";
-import memory2 from "@/assets/memory-2.png";
-import memory3 from "@/assets/memory-3.png";
+import memory1 from "@/assets/memory-1.jpg";
+import memory2 from "@/assets/memory-2.jpg";
+import memory3 from "@/assets/memory-3.jpg";
+import memory4 from "@/assets/memory-4.jpg";
+import memory5 from "@/assets/memory-5.jpg";
+import memory6 from "@/assets/memory-6.jpg";
+import memory7 from "@/assets/memory-7.jpg";
 
 interface PhotoDeckScreenProps {
   onNext: () => void;
@@ -13,6 +17,10 @@ const photos = [
   { id: 1, src: memory1, alt: "Sweet moment 1" },
   { id: 2, src: memory2, alt: "Sweet moment 2" },
   { id: 3, src: memory3, alt: "Sweet moment 3" },
+  { id: 3, src: memory4, alt: "Sweet moment 4" },
+  { id: 3, src: memory5, alt: "Sweet moment 5" },
+  { id: 3, src: memory6, alt: "Sweet moment 6" },
+  { id: 3, src: memory7, alt: "Sweet moment 7" },
 ];
 
 export const PhotoDeckScreen = ({ onNext }: PhotoDeckScreenProps) => {
