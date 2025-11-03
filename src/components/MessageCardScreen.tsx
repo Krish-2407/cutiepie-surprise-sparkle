@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { BuntingDecoration } from "@/components/BuntingDecoration";
 
@@ -8,6 +8,16 @@ interface MessageCardScreenProps {
 
 export const MessageCardScreen = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    // Auto-play the song when component mounts
+    if (audioRef.current) {
+      audioRef.current.play().catch(error => {
+        console.log("Autoplay prevented:", error);
+      });
+    }
+  }, []);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -15,6 +25,13 @@ export const MessageCardScreen = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8 relative overflow-hidden">
+      {/* Hidden audio player for background music */}
+      <audio 
+        ref={audioRef}
+        src="/mann-mera.mp3" 
+        loop
+        className="hidden"
+      />
       <BuntingDecoration />
       <h2 className="text-3xl md:text-4xl font-hand neon-text text-center">
         A Special Message
