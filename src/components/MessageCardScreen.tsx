@@ -69,10 +69,7 @@ export const MessageCardScreen = () => {
             </div>
             
             <p className="text-xl md:text-2xl font-hand text-center leading-relaxed">
-              Happy Birthday, Cutiepie! You deserve all the happiness, love, and smiles in the world today and always. 
-              You have this special way of making everything around you brighter, your smile, your kindness, 
-              and the way you make people feel truly cared for. I hope your day is filled with laughter, surprises, 
-              and moments that make your heart happy.
+              Happy Birthday! I know after yesterday's conversation there isn't much left to say, but I just wanted to tell you that it was truly wonderful spending all this time together. Every moment we shared — whether good or bad — and even that 2v1 fight, they're all worth remembering. Today marks your transition from teenage life to your 20s, a whole new chapter filled with endless possibilities. Even if it's without me, I genuinely wish you all the very best for the journey ahead. If destiny allows, maybe our paths will cross again someday. Until then, take care of yourself for me, keep growing, and achieve great heights. And I'll always wish that you find someone even better than me — someone proudly approved by Hitler Sahab. Happy Birthday My Dearest Pipo.
             </p>
             
             <div className="flex justify-center gap-3 mt-4">
