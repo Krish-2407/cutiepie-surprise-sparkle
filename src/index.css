@@ -278,6 +278,20 @@
     }
   }
 
+  @keyframes swirl-up {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(0.5);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-120vh) rotate(1080deg) scale(1.2);
+      opacity: 0;
+    }
+  }
+
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
@@ -324,6 +338,10 @@
 
   .animate-sparkle {
     animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  .animate-swirl-up {
+    animation: swirl-up 4s ease-out forwards;
   }
 
   .transition-smooth {

@@ -102,34 +102,55 @@ export const BalloonScreen = ({ onNext }: BalloonScreenProps) => {
                   }}
                 >
                   <div className="relative">
-                    {/* Balloon with proper inverted egg shape */}
+                    {/* Classic balloon shape */}
                     <div
-                      className="relative w-28 h-36 md:w-32 md:h-44 shadow-lg"
+                      className="relative w-28 h-36 md:w-32 md:h-44"
                       style={{
-                        backgroundColor: balloon.color,
-                        borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-                        boxShadow: `0 0 30px ${balloon.color}80, inset -10px -10px 20px rgba(0,0,0,0.2), inset 10px 10px 20px rgba(255,255,255,0.3)`
+                        background: `radial-gradient(circle at 35% 35%, ${balloon.color}ff, ${balloon.color}dd 40%, ${balloon.color}99 70%, ${balloon.color}66)`,
+                        borderRadius: '50% 50% 47% 53% / 55% 55% 50% 50%',
+                        boxShadow: `0 8px 30px ${balloon.color}60, inset -15px -20px 30px rgba(0,0,0,0.25), inset 15px 15px 30px rgba(255,255,255,0.4)`,
+                        filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))'
                       }}
                     >
-                      {/* Balloon highlight */}
+                      {/* Main highlight */}
                       <div 
-                        className="absolute top-6 left-6 w-8 h-12 rounded-full opacity-40"
+                        className="absolute top-5 left-5 w-10 h-14 rounded-full opacity-60"
                         style={{
-                          background: 'linear-gradient(135deg, rgba(255,255,255,0.8) 0%, transparent 70%)'
+                          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 40%, transparent 70%)',
+                          transform: 'rotate(-15deg)'
+                        }}
+                      />
+                      {/* Secondary highlight */}
+                      <div 
+                        className="absolute top-12 right-6 w-4 h-6 rounded-full opacity-30"
+                        style={{
+                          background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, transparent 70%)'
                         }}
                       />
                     </div>
-                    {/* Balloon knot */}
+                    {/* Balloon knot/tie */}
                     <div 
-                      className="absolute top-full left-1/2 transform -translate-x-1/2 w-2 h-3"
+                      className="absolute top-full left-1/2 transform -translate-x-1/2 w-3 h-4"
                       style={{
-                        backgroundColor: balloon.color,
-                        clipPath: 'polygon(50% 0%, 0% 50%, 50% 100%, 100% 50%)',
-                        filter: 'brightness(0.8)'
+                        background: `linear-gradient(180deg, ${balloon.color}dd, ${balloon.color}99)`,
+                        clipPath: 'polygon(50% 0%, 20% 40%, 35% 100%, 65% 100%, 80% 40%)',
+                        filter: 'brightness(0.7)'
                       }}
                     />
-                    {/* String */}
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0.5 h-28 bg-muted-foreground/30" style={{ marginTop: '3px' }} />
+                    {/* Curvy string */}
+                    <svg 
+                      className="absolute top-full left-1/2 transform -translate-x-1/2" 
+                      width="4" 
+                      height="120" 
+                      style={{ marginTop: '4px' }}
+                    >
+                      <path 
+                        d="M 2 0 Q 10 30, 2 60 Q -6 90, 2 120" 
+                        stroke="rgba(139, 92, 246, 0.4)" 
+                        strokeWidth="1.5" 
+                        fill="none"
+                      />
+                    </svg>
                   </div>
                 </button>
               ) : (

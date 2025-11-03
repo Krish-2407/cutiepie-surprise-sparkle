@@ -8,17 +8,17 @@ interface CakeScreenProps {
 
 export const CakeScreen = ({ onNext }: CakeScreenProps) => {
   const [step, setStep] = useState<"decorate" | "light" | "complete">("decorate");
-  const [confetti, setConfetti] = useState<Array<{ id: number; left: string; delay: string; color: string; type: 'circle' | 'square' | 'star' }>>([]);
+  const [confetti, setConfetti] = useState<Array<{ id: number; left: string; delay: string; color: string; type: 'circle' | 'square' | 'star' | 'sparkle' | 'swirl' }>>([]);
   const [candleLit, setCandleLit] = useState(false);
 
   const handleDecorate = () => {
-    const types: Array<'circle' | 'square' | 'star'> = ['circle', 'square', 'star'];
-    const brightColors = ['#ea00ff', '#00ffff', '#ffff00', '#ff00ff', '#00ff00', '#ff0099', '#00ffaa', '#ff6600'];
+    const types: Array<'circle' | 'square' | 'star' | 'sparkle' | 'swirl'> = ['circle', 'square', 'star', 'sparkle', 'swirl'];
+    const brightColors = ['#ea00ff', '#00ffff', '#ffff00', '#ff00ff', '#00ff00', '#ff0099', '#00ffaa', '#ff6600', '#ff3366', '#66ff33'];
     
-    const newConfetti = Array.from({ length: 150 }, (_, i) => ({
+    const newConfetti = Array.from({ length: 250 }, (_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 0.8}s`,
+      delay: `${Math.random() * 1.2}s`,
       color: brightColors[Math.floor(Math.random() * brightColors.length)],
       type: types[Math.floor(Math.random() * types.length)]
     }));
@@ -27,7 +27,7 @@ export const CakeScreen = ({ onNext }: CakeScreenProps) => {
     setTimeout(() => {
       setConfetti([]);
       setStep("light");
-    }, 3000);
+    }, 4000);
   };
 
   const handleLight = () => {
@@ -37,62 +37,78 @@ export const CakeScreen = ({ onNext }: CakeScreenProps) => {
     }, 1500);
   };
 
-  const getConfettiShape = (type: 'circle' | 'square' | 'star') => {
+  const getConfettiShape = (type: 'circle' | 'square' | 'star' | 'sparkle' | 'swirl') => {
     if (type === 'circle') return 'rounded-full';
     if (type === 'square') return 'rotate-45';
+    if (type === 'sparkle') return 'animate-spin';
+    if (type === 'swirl') return 'animate-swirl';
     return ''; // star will use clip-path
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-4 py-8 relative overflow-hidden">
       <BuntingDecoration />
-      {confetti.map((piece) => (
-        <div
-          key={piece.id}
-          className={`absolute animate-confetti ${getConfettiShape(piece.type)}`}
-          style={{
-            left: piece.left,
-            animationDelay: piece.delay,
-            backgroundColor: piece.color,
-            width: piece.type === 'star' ? '12px' : '10px',
-            height: piece.type === 'star' ? '12px' : '10px',
-            top: '-10px',
-            clipPath: piece.type === 'star' ? 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' : undefined,
-            boxShadow: `0 0 10px ${piece.color}, 0 0 20px ${piece.color}`
-          }}
-        />
-      ))}
+      {confetti.map((piece) => {
+        const isSwirl = piece.type === 'swirl';
+        const isSparkle = piece.type === 'sparkle';
+        const isStar = piece.type === 'star';
+        
+        return (
+          <div
+            key={piece.id}
+            className={`absolute ${isSwirl ? 'animate-swirl-up' : 'animate-confetti'} ${getConfettiShape(piece.type)}`}
+            style={{
+              left: piece.left,
+              animationDelay: piece.delay,
+              backgroundColor: isSwirl ? 'transparent' : piece.color,
+              width: isSwirl ? '20px' : isStar ? '14px' : isSparkle ? '8px' : '12px',
+              height: isSwirl ? '20px' : isStar ? '14px' : isSparkle ? '8px' : '12px',
+              top: isSwirl ? '100vh' : '-10px',
+              bottom: isSwirl ? '0' : 'auto',
+              clipPath: isStar ? 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' : 
+                       isSparkle ? 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' : undefined,
+              boxShadow: isSwirl ? 'none' : `0 0 12px ${piece.color}, 0 0 24px ${piece.color}`,
+              border: isSwirl ? `3px solid ${piece.color}` : 'none',
+              borderRadius: isSwirl ? '50% 50% 50% 50% / 60% 60% 40% 40%' : undefined,
+              transform: isSwirl ? 'rotate(0deg)' : undefined
+            }}
+          />
+        );
+      })}
       
-      {/* CSS Cake */}
+      {/* CSS Cake - Sticker Style */}
       <div className="relative">
         {/* Cake Base - Bottom Layer */}
-        <div className="relative w-64 h-32 bg-gradient-to-b from-pink-300 to-pink-400 rounded-t-[50%] rounded-b-lg shadow-2xl">
-          <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-pink-200 to-pink-300 rounded-t-[50%]"></div>
-          {/* Frosting drips */}
-          <div className="absolute top-0 left-8 w-8 h-6 bg-pink-200 rounded-b-full"></div>
-          <div className="absolute top-0 left-20 w-6 h-8 bg-pink-200 rounded-b-full"></div>
-          <div className="absolute top-0 right-20 w-7 h-7 bg-pink-200 rounded-b-full"></div>
-          <div className="absolute top-0 right-8 w-8 h-6 bg-pink-200 rounded-b-full"></div>
-        </div>
-        
-        {/* Cake Middle Layer */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 w-56 h-28 bg-gradient-to-b from-purple-300 to-purple-400 rounded-t-[50%] rounded-b-lg shadow-xl">
-          <div className="absolute inset-x-0 top-0 h-3 bg-gradient-to-b from-purple-200 to-purple-300 rounded-t-[50%]"></div>
-          {/* Frosting drips */}
-          <div className="absolute top-0 left-6 w-7 h-5 bg-purple-200 rounded-b-full"></div>
-          <div className="absolute top-0 left-16 w-6 h-7 bg-purple-200 rounded-b-full"></div>
-          <div className="absolute top-0 right-16 w-7 h-6 bg-purple-200 rounded-b-full"></div>
-          <div className="absolute top-0 right-6 w-6 h-5 bg-purple-200 rounded-b-full"></div>
+        <div className="relative w-72 h-28 rounded-lg overflow-hidden shadow-2xl">
+          {/* Cake body with layers */}
+          <div className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-orange-400"></div>
+          {/* Horizontal layer lines */}
+          <div className="absolute inset-x-0 top-1/3 h-1 bg-gradient-to-r from-green-500 via-teal-500 to-green-500"></div>
+          <div className="absolute inset-x-0 top-2/3 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"></div>
+          {/* Wavy frosting top */}
+          <svg className="absolute inset-x-0 top-0 w-full h-8" preserveAspectRatio="none" viewBox="0 0 288 32">
+            <path d="M0,16 Q24,4 48,16 T96,16 T144,16 T192,16 T240,16 T288,16 L288,0 L0,0 Z" fill="#ec4899" opacity="0.9"/>
+          </svg>
+          {/* Bottom frosting wave */}
+          <svg className="absolute inset-x-0 bottom-0 w-full h-6" preserveAspectRatio="none" viewBox="0 0 288 24">
+            <path d="M0,8 Q24,0 48,8 T96,8 T144,8 T192,8 T240,8 T288,8 L288,24 L0,24 Z" fill="rgba(236, 72, 153, 0.3)"/>
+          </svg>
         </div>
         
         {/* Cake Top Layer */}
-        <div className="absolute top-16 left-1/2 -translate-x-1/2 w-48 h-24 bg-gradient-to-b from-cyan-300 to-cyan-400 rounded-t-[50%] rounded-b-lg shadow-lg">
-          <div className="absolute inset-x-0 top-0 h-3 bg-gradient-to-b from-cyan-200 to-cyan-300 rounded-t-[50%]"></div>
-          {/* Frosting drips */}
-          <div className="absolute top-0 left-4 w-6 h-4 bg-cyan-200 rounded-b-full"></div>
-          <div className="absolute top-0 left-14 w-5 h-6 bg-cyan-200 rounded-b-full"></div>
-          <div className="absolute top-0 right-14 w-6 h-5 bg-cyan-200 rounded-b-full"></div>
-          <div className="absolute top-0 right-4 w-5 h-4 bg-cyan-200 rounded-b-full"></div>
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 w-56 h-24 rounded-lg overflow-hidden shadow-xl">
+          {/* Cake body */}
+          <div className="absolute inset-0 bg-gradient-to-b from-orange-300 to-yellow-400"></div>
+          {/* Middle decorative wave */}
+          <div className="absolute inset-x-0 top-1/2 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500"></div>
+          {/* Wavy frosting top */}
+          <svg className="absolute inset-x-0 top-0 w-full h-8" preserveAspectRatio="none" viewBox="0 0 224 32">
+            <path d="M0,16 Q20,6 40,16 T80,16 T120,16 T160,16 T200,16 T224,16 L224,0 L0,0 Z" fill="#ec4899" opacity="0.95"/>
+          </svg>
+          {/* Bottom frosting wave */}
+          <svg className="absolute inset-x-0 bottom-0 w-full h-6" preserveAspectRatio="none" viewBox="0 0 224 24">
+            <path d="M0,8 Q20,2 40,8 T80,8 T120,8 T160,8 T200,8 T224,8 L224,24 L0,24 Z" fill="rgba(236, 72, 153, 0.4)"/>
+          </svg>
         </div>
         
         {/* Candle */}
