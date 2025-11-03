@@ -76,73 +76,97 @@ export const CakeScreen = ({ onNext }: CakeScreenProps) => {
         );
       })}
       
-      {/* CSS Cake - Sticker Style */}
-      <div className="relative">
-        {/* Cake Base - Bottom Layer */}
-        <div className="relative w-72 h-28 rounded-lg overflow-hidden shadow-2xl">
-          {/* Cake body with layers */}
-          <div className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-orange-400"></div>
-          {/* Horizontal layer lines */}
-          <div className="absolute inset-x-0 top-1/3 h-1 bg-gradient-to-r from-green-500 via-teal-500 to-green-500"></div>
-          <div className="absolute inset-x-0 top-2/3 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"></div>
+      {/* Beautiful Birthday Cake */}
+      <div className="relative h-96 flex items-end justify-center">
+        {/* Cake Stand/Plate */}
+        <div className="absolute bottom-0 w-80 h-4 bg-gradient-to-b from-gray-200 to-gray-300 rounded-full shadow-lg"></div>
+        
+        {/* Bottom Tier (Largest) */}
+        <div className="z-10 absolute bottom-4 w-72 h-32 bg-gradient-to-br from-pink-400 via-pink-500 to-pink-600 rounded-2xl shadow-2xl">
+          {/* Frosting texture */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-2xl"></div>
+          
+          {/* Decorative dots */}
+          <div className="absolute top-1/2 left-4 w-3 h-3 bg-white rounded-full"></div>
+          <div className="absolute top-1/2 left-12 w-3 h-3 bg-white rounded-full"></div>
+          <div className="absolute top-1/2 right-12 w-3 h-3 bg-white rounded-full"></div>
+          <div className="absolute top-1/2 right-4 w-3 h-3 bg-white rounded-full"></div>
+          
           {/* Wavy frosting top */}
-          <svg className="absolute inset-x-0 top-0 w-full h-8" preserveAspectRatio="none" viewBox="0 0 288 32">
-            <path d="M0,16 Q24,4 48,16 T96,16 T144,16 T192,16 T240,16 T288,16 L288,0 L0,0 Z" fill="#ec4899" opacity="0.9"/>
-          </svg>
-          {/* Bottom frosting wave */}
-          <svg className="absolute inset-x-0 bottom-0 w-full h-6" preserveAspectRatio="none" viewBox="0 0 288 24">
-            <path d="M0,8 Q24,0 48,8 T96,8 T144,8 T192,8 T240,8 T288,8 L288,24 L0,24 Z" fill="rgba(236, 72, 153, 0.3)"/>
+          <svg className="absolute -top-0 rotate-180 inset-x-0 w-full h-6" preserveAspectRatio="none" viewBox="0 0 288 24">
+            <path d="M0,12 Q18,0 36,12 T72,12 T108,12 T144,12 T180,12 T216,12 T252,12 T288,12 L288,24 L0,24 Z" fill="#f353a6ff" />
           </svg>
         </div>
         
-        {/* Cake Top Layer */}
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 w-56 h-24 rounded-lg overflow-hidden shadow-xl">
-          {/* Cake body */}
-          <div className="absolute inset-0 bg-gradient-to-b from-orange-300 to-yellow-400"></div>
-          {/* Middle decorative wave */}
-          <div className="absolute inset-x-0 top-1/2 h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500"></div>
+        {/* Middle Tier */}
+        <div className="z-9 absolute bottom-32 w-56 h-28 bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600 rounded-2xl shadow-xl">
+          {/* Frosting texture */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-2xl"></div>
+          
+          {/* Decorative dots */}
+          <div className="absolute top-1/2 left-6 w-2.5 h-2.5 bg-white rounded-full"></div>
+          <div className="absolute top-1/2 right-6 w-2.5 h-2.5 bg-white rounded-full"></div>
+          
           {/* Wavy frosting top */}
-          <svg className="absolute inset-x-0 top-0 w-full h-8" preserveAspectRatio="none" viewBox="0 0 224 32">
-            <path d="M0,16 Q20,6 40,16 T80,16 T120,16 T160,16 T200,16 T224,16 L224,0 L0,0 Z" fill="#ec4899" opacity="0.95"/>
-          </svg>
-          {/* Bottom frosting wave */}
-          <svg className="absolute inset-x-0 bottom-0 w-full h-6" preserveAspectRatio="none" viewBox="0 0 224 24">
-            <path d="M0,8 Q20,2 40,8 T80,8 T120,8 T160,8 T200,8 T224,8 L224,24 L0,24 Z" fill="rgba(236, 72, 153, 0.4)"/>
+          <svg className="absolute -top-0 rotate-180 inset-x-0 w-full h-6" preserveAspectRatio="none" viewBox="0 0 224 24">
+            <path d="M0,12 Q16,0 32,12 T64,12 T96,12 T128,12 T160,12 T192,12 T224,12 L224,24 L0,24 Z" fill="#a24df7ff" />
           </svg>
         </div>
         
-        {/* Candle */}
-        <div className="absolute -top-16 left-1/2 -translate-x-1/2 flex flex-col items-center">
-          {/* Candle stick */}
-          <div className="relative w-3 h-16 bg-gradient-to-r from-red-400 via-pink-300 to-red-400 rounded-t-sm shadow-md">
-            {/* Candle stripes */}
-            <div className="absolute top-2 inset-x-0 h-1 bg-white/30"></div>
-            <div className="absolute top-8 inset-x-0 h-1 bg-white/30"></div>
+        {/* Top Tier (Smallest) */}
+        <div className="z-0 absolute bottom-56 w-40 h-24 bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 rounded-2xl shadow-lg">
+          {/* Frosting texture */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-2xl"></div>
+          
+          {/* Decorative dots */}
+          <div className="absolute top-1/2 left-4 w-2 h-2 bg-white rounded-full"></div>
+          <div className="absolute top-1/2 right-4 w-2 h-2 bg-white rounded-full"></div>
+          
+          {/* Wavy frosting top */}
+          <svg className="absolute -top-0 rotate-180 inset-x-0 w-full h-6" preserveAspectRatio="none" viewBox="0 0 160 24">
+            <path d="M0,12 Q13,0 26,12 T52,12 T78,12 T104,12 T130,12 T160,12 L160,24 L0,24 Z" fill="#0b899cff" />
+          </svg>
+        </div>
+        
+        {/* Candle on top tier */}
+        <div className="absolute bottom-80 flex flex-col items-center">
+          {/* Candle stick with stripes */}
+          <div className="relative w-4 h-20 bg-gradient-to-r from-red-500 via-red-400 to-red-500 rounded-t-lg shadow-lg">
+            <div className="absolute top-3 inset-x-0 h-2 bg-white/40 rounded-full"></div>
+            <div className="absolute top-8 inset-x-0 h-2 bg-white/40 rounded-full"></div>
+            <div className="absolute top-13 inset-x-0 h-2 bg-white/40 rounded-full"></div>
+            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-5 h-2 bg-gradient-to-r from-red-600 to-red-500 rounded-full"></div>
           </div>
-          {/* Candle wick */}
-          <div className="absolute -top-2 w-0.5 h-3 bg-gray-800"></div>
+          
+          {/* Wick */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-1 h-4 bg-gray-800 rounded-sm"></div>
           
           {/* Flame */}
           {candleLit && (
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-              <div className="relative w-6 h-10 bg-gradient-to-t from-yellow-400 via-orange-500 to-yellow-300 rounded-full animate-pulse"
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 animate-pulse">
+              {/* Outer glow */}
+              <div className="absolute -inset-6 bg-orange-400/40 rounded-full blur-2xl"></div>
+              
+              {/* Main flame */}
+              <div className="relative w-8 h-12 bg-gradient-to-t from-yellow-500 via-orange-500 to-yellow-300 rounded-full"
                 style={{
-                  clipPath: 'polygon(50% 0%, 70% 30%, 100% 50%, 70% 70%, 50% 100%, 30% 70%, 0% 50%, 30% 30%)',
-                  filter: 'blur(1px)',
-                  animation: 'flicker 0.3s infinite alternate'
+                  clipPath: 'polygon(50% 0%, 75% 25%, 100% 50%, 75% 75%, 50% 100%, 25% 75%, 0% 50%, 25% 25%)',
+                  filter: 'blur(0.5px)',
                 }}
               ></div>
-              <div className="absolute inset-0 w-3 h-6 left-1/2 top-2 -translate-x-1/2 bg-gradient-to-t from-yellow-200 to-white rounded-full blur-sm opacity-80"></div>
-              <div className="absolute -inset-4 bg-orange-400/30 rounded-full blur-xl animate-pulse"></div>
+              
+              {/* Inner bright core */}
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-4 h-7 bg-gradient-to-t from-yellow-200 to-white rounded-full opacity-90 blur-sm"></div>
             </div>
           )}
         </div>
         
+        {/* Overall glow when candle is lit */}
         {candleLit && (
           <div className="absolute inset-0 pointer-events-none" 
             style={{
-              boxShadow: '0 0 80px 40px rgba(251, 191, 36, 0.4)',
-              filter: 'blur(20px)'
+              boxShadow: '0 0 100px 50px rgba(251, 191, 36, 0.3)',
+              filter: 'blur(30px)'
             }}
           ></div>
         )}
