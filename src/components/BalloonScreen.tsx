@@ -6,10 +6,10 @@ interface BalloonScreenProps {
 }
 
 const balloons = [
-  { id: 1, color: "#fbbf24", word: "Happy", left: "20%", animationDelay: "0s" },
+  { id: 1, color: "#fbbf24", word: "Happy", left: "10%", animationDelay: "0s" },
   { id: 2, color: "#10b981", word: "Birth", left: "40%", animationDelay: "0.2s" },
-  { id: 3, color: "#3b82f6", word: "Day", left: "60%", animationDelay: "0.4s" },
-  { id: 4, color: "#ec4899", word: "Cutieee", left: "80%", animationDelay: "0.6s" },
+  { id: 3, color: "#3b82f6", word: "Day", left: "70%", animationDelay: "0.4s" },
+  { id: 4, color: "#ec4899", word: "Pipo", left: "100%", animationDelay: "0.6s" },
 ];
 
 // Confetti pieces for party popper effect
